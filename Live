@@ -1,0 +1,35 @@
+local LiveCaption = {}
+
+LiveCaption.Caption = function(Caption)
+local p6 = nil
+local p4
+local p5 = false
+local u5 = p6;
+local l__TweenService__2 = game:GetService("TweenService");
+local l__Parent__1 = game.Players.LocalPlayer.PlayerGui.MainUI
+local v9 = l__Parent__1.MainFrame.Caption:Clone();
+if l__Parent__1:FindFirstChild("LiveCaption") then
+	l__Parent__1:FindFirstChild("LiveCaption"):Destroy();
+end;
+if p5 == true then
+	v9 = l__Parent__1.MainFrame.Caption:Clone();
+end;
+v9.Name = "LiveCaption";
+v9.Visible = true;
+v9.Text = Caption.Text; -- here text
+v9.Parent = l__Parent__1;
+if not u5 then
+	u5 = Caption.Timer; --Here Timer 
+end;
+l__TweenService__2:Create(v9, TweenInfo.new(u5, Enum.EasingStyle.Exponential, Enum.EasingDirection.In), {
+	BackgroundTransparency = 1, 
+	TextTransparency = 1, 
+	TextStrokeTransparency = 2
+}):Play();
+l__TweenService__2:Create(v9, TweenInfo.new(1.5, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
+	BackgroundColor3 = Color3.new(0, 0, 0)
+}):Play();
+l__Parent__1.Initiator.Main_Game.Functions.Caption:Play();
+game.Debris:AddItem(v9, 9);
+end
+return LiveCaption;
